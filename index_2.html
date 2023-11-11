@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Máy Tính Bỏ Túi</title>
+    <style>
+        input[type="text"],
+        button {
+            padding: 10px;
+            margin: 5px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <input type="text" id="number1">
+    <button onclick="setOperator('+')">+</button>
+    <button onclick="setOperator('-')">-</button>
+    <button onclick="setOperator('*')">*</button>
+    <button onclick="setOperator('/')">/</button>
+    <button onclick="setOperator('^')">^</button>
+    <input type="text" id="number2">
+    <button onclick="calculate()">=</button>
+    <input type="text" id="result" disabled>
+
+    <script>
+        let operator = '';
+
+        function setOperator(selectedOperator) {
+            operator = selectedOperator;
+        }
+
+        function calculate() {
+            let num1 = parseFloat(document.getElementById('number1').value);
+            let num2 = parseFloat(document.getElementById('number2').value);
+            let result = 0;
+
+            switch (operator) {
+                case '+':
+                    result = num1 + num2;
+                    break;
+                case '-':
+                    result = num1 - num2;
+                    break;
+                case '*':
+                    result = num1 * num2;
+                    break;
+                case '/':
+                    result = num1 / num2;
+                    break;
+                case '^':
+                    result = Math.pow(num1, num2);
+                    break;
+                default:
+                    result = "Error";
+            }
+
+            document.getElementById('result').value = result;
+        }
+    </script>
+
+</body>
+
+</html>
