@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Máy Tính</title>
+    <style>
+        input[type="text"] {
+            width: 50px;
+        }
+    </style>
+</head>
+
+<body>
+    <input type="text" id="number1">
+    <select id="operator">
+        <option value="+">+</option>
+        <option value="-">-</option>
+        <option value="*">*</option>
+        <option value="/">/</option>
+        <option value="^">^</option>
+    </select>
+    <input type="text" id="number2">
+    <button onclick="calculate()">=</button>
+    <input type="text" id="result" disabled>
+
+    <script>
+        function calculate() {
+            const num1 = parseFloat(document.getElementById('number1').value);
+            const num2 = parseFloat(document.getElementById('number2').value);
+            const oper = document.getElementById('operator').value;
+            let result;
+
+            switch (oper) {
+                case '+':
+                    result = num1 + num2;
+                    break;
+                case '-':
+                    result = num1 - num2;
+                    break;
+                case '*':
+                    result = num1 * num2;
+                    break;
+                case '/':
+                    result = num2 !== 0 ? num1 / num2 : "Không thể chia cho 0";
+                    break;
+                case '^':
+                    result = Math.pow(num1, num2);
+                    break;
+                default:
+                    result = "Phép toán không hợp lệ";
+            }
+
+            document.getElementById('result').value = result;
+        }
+    </script>
+</body>
+
+</html>
